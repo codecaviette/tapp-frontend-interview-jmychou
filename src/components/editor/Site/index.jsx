@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { theme } from '../../../styles/theme';
+import styled from "styled-components";
+
 
 const Root = styled.div`
   max-width: 600px;
@@ -11,28 +11,29 @@ const Root = styled.div`
 const SiteTitle = styled.h1`
   font-size: 24px;
   font-weight: 500;
-  color: ${(props) => props.colors.secondary}; // Change to Secondary color
+  color: ${props => props.colors.secondary}; // Change to Secondary color // https://emotion.sh/docs/styled#changing-based-on-props
   margin-bottom: 12px;
 `;
 
 const SiteDescription = styled.p`
   font-size: 16px;
   font-weight: 400;
-  color: ${(props) => props.colors.tertiary}; // Change to Tertiary color
+  color: ${props => props.colors.tertiary}; // Change to Tertiary color
 `;
 
 const DocLink = styled.a`
   text-decoration: none;
   font-weight: 500;
-  color: ${(props) => props.colors.secondary}; // Change to Secondary color
+  color: ${props => props.colors.secondary}; // Change to Secondary color
   margin-top: 12px;
 `;
+
 
 /** Site preview for the Editor page */
 function Site({ colors }) {
   return (
     <Root colors={colors}>
-      <SiteTitle colors={colors}>StyleAI Frontend Interview ⭐️</SiteTitle>
+      <SiteTitle colors={colors} >StyleAI Frontend Interview ⭐️</SiteTitle>
       <SiteDescription colors={colors}>
         Congratulations on making it to the coding interview for the frontend
         developer internship at StyleAI! In this task, you will be developing a
@@ -49,8 +50,8 @@ function Site({ colors }) {
       </SiteDescription>
       <DocLink
         colors={colors}
-        target='_blank'
-        href='https://github.com/tapp-ai/tapp-frontend-interview#readme'
+        target="_blank"
+        href="https://github.com/tapp-ai/tapp-frontend-interview#readme"
       >
         Read Task Documentation
       </DocLink>
