@@ -1,8 +1,10 @@
-import styled from "@emotion/styled";
-import { motion } from "framer-motion";
-import { theme } from "../styles/theme";
-import Sidebar from "../components/editor/Sidebar";
-import Site from "../components/editor/Site";
+import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
+import { theme } from '../styles/theme';
+import Sidebar from '../components/editor/Sidebar';
+import Site from '../components/editor/Site';
+import { useState, useEffect } from 'react';
+import { siteThemes } from '../constants/siteThemes';
 
 // Component Styles
 
@@ -32,7 +34,7 @@ const SiteWrapper = styled(motion.div)`
   overflow: hidden;
   border: 1px solid ${theme.colors.black[40]};
   border-radius: 8px;
-  background-color: ${theme.colors.black[10]}; // Change to Primary color
+  background-color: ${(props) => props.colors.primary}; // Change to Primary color
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,11 +47,25 @@ const SideBarWrapper = styled(motion.div)`
 
 /** Root Editor View */
 function Editor() {
+
+  // Create and initialize state (default styling)
+  // NEED TO: Pass as prop to Site comp
+  const [selectedTheme, setTheme] = useState('default');
+  const [colors, setColors] = useState(siteThemes[selectedTheme]);
+
+  // Define function to update state per user input
+  // NEED TO: Pass as prop to Sidebar comp
+  const updateTheme = (selectedTheme) => {
+    setTheme(selectedTheme)
+  }
+
+
+
   return (
     <Root>
       <RootContent>
-        <SiteWrapper layout>
-          <Site />
+        <SiteWrapper layout colors={colors}>
+          <Site colors={colors}/>
         </SiteWrapper>
         <SideBarWrapper layout>
           <Sidebar />
